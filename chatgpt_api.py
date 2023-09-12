@@ -5,8 +5,8 @@ openai.api_key = api_key  # TODO: set the api key of openai
 
 
 def openai_api_chatcompletion(
-    content=None,
-    messages=None,
+    content:str=None,
+    messages:list=None,
     
     engine='gpt-3.5-turbo',
     max_tokens=2048,
@@ -17,7 +17,7 @@ def openai_api_chatcompletion(
     frequency_penalty=0.0,
 ):
     if messages is None and content is None:
-        raise "no content"
+        raise Exception('there\'s no content')
     if messages is None:
         messages = [{ "role": "user", "content": content}]
         
