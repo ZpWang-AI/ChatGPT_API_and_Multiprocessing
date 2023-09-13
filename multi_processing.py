@@ -1,24 +1,34 @@
-# importing the multiprocessing module 
-import multiprocessing 
+##########
+# 多进程
+import multiprocessing
+import time
+import random
 
-def print_cube(num): 
-    print("Cube: {}".format(num * num * num)) 
 
-def print_square(num): 
-    print("Square: {}".format(num * num)) 
+def worker(num):
+    """进程要执行的任务"""
+    print(f"Worker {num} 开始执行")
+    
+    # 在这里编写具体的任务逻辑
+    time.sleep(random.random()*3)
+    
+    print(f"Worker {num} 执行结束")
 
-if __name__ == "__main__": 
-    # creating processes 
-    p1 = multiprocessing.Process(target=print_square, args=(10, )) 
-    p2 = multiprocessing.Process(target=print_cube, args=(10, )) 
 
-    # starting process 1&2
-    p1.start() 
-    p2.start() 
+if __name__ == '__main__':
+    multiprocessing.freeze_support()  # 确保正确启动子进程，避免冲突
 
-    # wait until process 1&2 is finished 
-    p1.join() 
-    p2.join() 
+    # 创建进程列表
+    processes = []
 
-    # both processes finished 
-    print("Done!")
+    # 创建并启动多个进程
+    for i in range(5):
+        p = multiprocessing.Process(target=worker, args=(i,))
+        processes.append(p)
+        p.start()
+
+    # 等待所有进程完成
+    for p in processes:
+        p.join()
+
+    print("所有进程执行完毕")

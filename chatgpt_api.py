@@ -41,25 +41,25 @@ if __name__ == '__main__':
     response_ = openai_api_chatcompletion('hello, world!')
     print(response_)
     '''
-{
-  "id": "chatcmpl-7xwhsxp8QiAmKOEBtSyBRzC4qW6Ha",
-  "object": "chat.completion",
-  "created": 1694521376,
-  "model": "gpt-3.5-turbo-0613",
-  "choices": [
     {
-      "index": 0,
-      "message": {
-        "role": "assistant",
-        "content": "Hello! How can I assist you today?"
-      },
-      "finish_reason": "stop"
+      "id": "chatcmpl-7xwhsxp8QiAmKOEBtSyBRzC4qW6Ha",
+      "object": "chat.completion",
+      "created": 1694521376,
+      "model": "gpt-3.5-turbo-0613",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "Hello! How can I assist you today?"
+          },
+          "finish_reason": "stop"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 11,
+        "completion_tokens": 9,
+        "total_tokens": 20
+      }
     }
-  ],
-  "usage": {
-    "prompt_tokens": 11,
-    "completion_tokens": 9,
-    "total_tokens": 20
-  }
-}
     '''
